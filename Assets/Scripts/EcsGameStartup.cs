@@ -34,7 +34,8 @@ public class EcsGameStartup : MonoBehaviour
 
     private void AddSystems()
     {
-        
+        _systems.Add(new PlayerInputSystem())
+            .Add(new MovementSystem());
     }
 
     private void AddOneFrames()
