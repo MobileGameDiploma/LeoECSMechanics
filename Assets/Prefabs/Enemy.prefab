@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value:
-    Target: {fileID: 0}
+    Target: {fileID: 378950300841017685, guid: 20a7fd766aa314c43a0cb4e0ca33a2cc, type: 3}
 --- !u!114 &8009852652609153719
 MonoBehaviour:
   m_ObjectHideFlags: 0
