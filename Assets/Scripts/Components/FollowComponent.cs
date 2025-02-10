@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public struct FollowComponent
+[Serializable] public struct FollowComponent
 {
     public Transform Target;
 }
