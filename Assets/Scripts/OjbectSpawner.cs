@@ -1,19 +1,29 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 public class OjbectSpawner : MonoBehaviour
 {
-    public FollowProvider prefab;
-    public float Delay;
-    public Transform[] SpawnPoints;
-    public Transform Target;
+    private FollowProvider _prefab;
+    private float _delay;
+    private Transform[] _spawnPoints;
+    private Transform _target;
+
+    [Inject]
+    public void Construct(FollowProvider prefab, float delay, Transform[] spawnPoints, Transform target)
+    {
+        _prefab = prefab;
+        _delay = delay;
+        _spawnPoints = spawnPoints;
+        _target = target;
+    }
     
     private System.Random _random = new System.Random();
 
     private void Start()
     {
-        prefab.SetTarget(Target);
+        _prefab.SetTarget(_target);
         StartCoroutine(SpawnWithDelayLoop());
     }
 
@@ -21,8 +31,8 @@ public class OjbectSpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Delay);
-            Instantiate(prefab.gameObject, SpawnPoints[_random.Next(SpawnPoints.Length)].position, Quaternion.identity);
+            yield return new WaitForSeconds(_delay);
+            Instantiate(_prefab.gameObject, _spawnPoints[_random.Next(_spawnPoints.Length)].position, Quaternion.identity);
         }
     }
 }
